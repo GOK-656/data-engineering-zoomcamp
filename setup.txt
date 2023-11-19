@@ -1,5 +1,12 @@
 cd /workspaces/data-engineering-zoomcamp/week_1_basics_n_setup/2_docker_sql
 docker-compose up -d
 
+prefect orion start
+
+# GCP setup
+gcloud auth login
+gcloud config set project dtc-de-404803
+gcloud auth application-default set-quota-project dtc-de-404803
+
 # exit
 docker-compose down

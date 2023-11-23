@@ -16,3 +16,12 @@ serving_dir
 !week_6_stream_processing/avro_example/data/rides.csv
 week_3_data_warehouse/extras/fhv_tripdata_*
 week_3_data_warehouse/extras/green/
+week_5_batch_processing/code/taxi+_zone_lookup.csv
+week_5_batch_processing/code/zones
+week_5_batch_processing/code/fhvhv_tripdata_2021-01.csv.gz
+week_5_batch_processing/code/fhvhv_tripdata_2021-01.csv
+week_5_batch_processing/code/fhvhv/
+week_5_batch_processing/code/head.csv
+week_5_batch_processing/code/data/
+week_5_batch_processing/code/tmp/
+week_5_batch_processing/code/lib/

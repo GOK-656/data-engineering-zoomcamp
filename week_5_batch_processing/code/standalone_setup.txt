@@ -1,0 +1,45 @@
+cd /usr/local/sdkman/candidates/spark/current
+./sbin/start-master.sh
+./sbin/start-worker.sh spark://localhost:7077
+
+python 06_spark_sql.py \
+    --input_green=data/pq/green/2020/*/ \
+    --input_yellow=data/pq/yellow/2020/*/ \
+    --output=data/report-2020
+
+URL="spark://localhost:7077"
+spark-submit \
+    --master="${URL}" \
+    06_spark_sql.py \
+    --input_green=data/pq/green/2021/*/ \
+    --input_yellow=data/pq/yellow/2021/*/ \
+    --output=data/report-2021
+
+./sbin/stop-worker.sh
+./sbin/stop-master.sh
+
+dataproc:
+--input_green=gs://dezoomcamp_gok/pq/green/2021/*/ \
+--input_yellow=gs://dezoomcamp_gok/pq/yellow/2021/*/ \
+--output=gs://dezoomcamp_gok/report-2021
+
+submit via gcloud:
+gcloud dataproc jobs submit pyspark \
+    --cluster=de-zoomcamp-cluster \
+    --region=us-central1 \
+    gs://dezoomcamp_gok/code/06_spark_sql.py \
+    -- \
+        --input_green=gs://dezoomcamp_gok/pq/green/2020/*/ \
+        --input_yellow=gs://dezoomcamp_gok/pq/yellow/2020/*/ \
+        --output=gs://dezoomcamp_gok/report-2020
+
+bigquery:
+gcloud dataproc jobs submit pyspark \
+    --cluster=de-zoomcamp-cluster \
+    --region=us-central1 \
+    --jars=gs://spark-lib/bigquery/spark-bigquery-latest_2.12.jar \
+    gs://dezoomcamp_gok/code/06_spark_sql_big_query.py \
+    -- \
+        --input_green=gs://dezoomcamp_gok/pq/green/2020/*/ \
+        --input_yellow=gs://dezoomcamp_gok/pq/yellow/2020/*/ \
+        --output=trips_data_all.report-2020

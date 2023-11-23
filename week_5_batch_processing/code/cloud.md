@@ -11,7 +11,7 @@ gsutil -m cp -r pq/ gs://dtc_data_lake_de-zoomcamp-nytaxi/pq
 Download the jar for connecting to GCS to any location (e.g. the `lib` folder):
 
 ```bash
-gsutil cp gs://hadoop-lib/gcs/gcs-connector-hadoop3-2.2.5.jar
+gsutil cp gs://hadoop-lib/gcs/gcs-connector-hadoop3-2.2.5.jar gcs-connector-hadoop3-2.2.5.jar
 ```
 
 See the notebook with configuration in [09_spark_gcs.ipynb](09_spark_gcs.ipynb)

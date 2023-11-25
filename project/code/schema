@@ -1,0 +1,10 @@
+types.StructType([
+    types.StructField('SNo', types.IntegerType(), True), 
+    types.StructField('ObservationDate', types.StringType(), True), 
+    types.StructField('Province/State', types.StringType(), False), 
+    types.StructField('Country/Region', types.StringType(), True), 
+    types.StructField('Last Update', types.StringType(), True), 
+    types.StructField('Confirmed', types.FloatType(), True), 
+    types.StructField('Deaths', types.FloatType(), True), 
+    types.StructField('Recovered', types.FloatType(), True)
+])
